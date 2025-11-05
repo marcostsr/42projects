@@ -1,0 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marcos-t <marcos-t@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 19:11:37 by marcos-t          #+#    #+#             */
+/*   Updated: 2025/11/04 19:12:48 by marcos-t         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+/**
+ * @brief Writes a string to a given file descriptor.
+ * @param char *s
+ * @param int fd. - file to write on
+ * @return void
+ */
+void	ft_putstr_fd(char *s, int fd)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < ft_strlen(s))
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
+}

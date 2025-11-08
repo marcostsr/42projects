@@ -15,7 +15,7 @@
 static char	*ft_toupper_str(char *str)
 {
 	int i;
-
+ /*Mudei o texto da funcao */
 	i = 0;
 	while (str[i])
 	{

@@ -21,12 +21,29 @@
 # include <unistd.h>
 # include <stdint.h>
 
+/*
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+*/
 
-void	ft_printf(const char *str, char **argv);
+
+typedef struct counters
+{
+	int i;
+	int j;
+	int res_i;
+	int res_j;
+}	counters;
+
+
+
+
+void	ft_printf(const char *str, ...);
+int ft_for(int *i, int start, int end, int *reset);
+void	c_hex(char *argv, int x);
+
 
 #endif

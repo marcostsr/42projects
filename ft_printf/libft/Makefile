@@ -33,10 +33,10 @@ BONUS_OBJ = $(BONUS:.c=.o)
 all: $(NAME) 
 
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+	ar -rcs $(NAME) $(OBJ)
 
 bonus : $(OBJ) $(BONUS_OBJ)
-	ar rcs $(NAME) $(OBJ) $(BONUS_OBJ)
+	ar -rcs $(NAME) $(OBJ) $(BONUS_OBJ)
 
 %.o: %.c
 	cc $(CFLAGS) -c $< -o $@

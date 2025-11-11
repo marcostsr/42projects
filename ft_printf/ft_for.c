@@ -17,64 +17,43 @@
 #include <unistd.h>
 #include <stdint.h>
 
-/*Esta funcionando para o hexadecimal*/
-
-static char	*ft_toupper_str(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] >= 'a' && str[i] <= 'z')
-			str[i] = str[i] - 32;
-		i++;
-	}
-	return (str);
-}
-
-static	int counter_numeric(int rtc)
-{
-	int i;
-
-	i = 1;
-	while (rtc / 16)
-	{
-		i++;
-		rtc /= 16;
-	}
-	return (i);
-}
-
 /**
- * @brief Receive a number in decimal form, write in hexadecimal
- * @param char *argv - decimal number
- * @param int x - 1 for lower case, 2 for upper case
- * @return void
+ * @brief Use of for function homemade, remember to put the reset
+ * @brief of diferente name of variables
+ * @param int start, started at start
+ * @param int end, it will end at (end - 1)
+ * @param int reset - set to 0 to reset at end
+ * @return int just 1 to execute while or 0 to stop
  */
-void	c_hex(char *argv, int x)
+int ft_for(int *i, int start, int end, int *reset)
 {
-	char *str;
-	char *hexadeci;
-	size_t i;
-	int num;
-	int size;
-	
-	str = malloc(20);
-	if (!str)
-		return ;
-	ft_strcpy(str,"0123456789abcdef");
-	i = 0;
-	num = ft_atoi(argv);
-	size = counter_numeric(num);
-	hexadeci = malloc((size + 1));
-	if (x == 2)
-		str = ft_toupper_str(str);
-	while (i < size)
-	{
-		hexadeci[size - i - 1] = str[num % 16];
-		num /= 16;
-		i++;
-	}
-	ft_putstr_fd(hexadeci,1);
+    if (!*reset)
+    {
+        *i = start;
+        *reset = 1;
+        return (1);
+    }
+    (*i)++;
+    if (*i >= end)
+    {
+        *i = 0;
+        *reset = 0;
+        return (0);
+    } 
+    return (1);
 }
+
+int main(void)
+{
+    int i = 0;
+    int reset_i = 0;
+    int reset_j = 0;
+    int j = 0;
+
+    while (ft_for(&i, 37, 40,&reset_i))  // reset = 1
+    { 
+        while (ft_for(&j, 0, 3,&reset_j))  // reset = 1 novamente
+            printf("i : %d\n j : %d\n", i,j);
+    }
+}
+
